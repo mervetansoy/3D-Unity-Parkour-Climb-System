@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
    [SerializeField] LayerMask groundLayer;
 
    bool isGrounded;
+   bool hasControl = true;
    float ySpeed;
 
    Quaternion targetRotation;
@@ -40,6 +41,8 @@ public class PlayerController : MonoBehaviour
     var moveInput = (new Vector3(horizontal, 0 , vertical)).normalized;
 
     var moveD= cameraController.PlanerRotation * moveInput;
+    
+    if(!hasControl) return;
 
     groundCheck();
     Debug.Log("Ground="+isGrounded);
@@ -74,10 +77,23 @@ public class PlayerController : MonoBehaviour
     isGrounded = Physics.CheckSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius, groundLayer);
    }
 
+   public void SetControl(bool hasControl)
+   {
+    this.hasControl = hasControl;
+    characterController.enabled = hasControl;
+
+    if(!hasControl)
+    {
+        animator.SetFloat("MoveAnim", 0f);
+        targetRotation = transform.rotation;
+    }
+   }
+
    private void OnDrawGizmosSelected()
    {
     Gizmos.color= new Color(0,1,0,0.5f);
     Gizmos.DrawSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius);
    }
+   public float RotationSpeed => rotationSpeed;
 }
 

@@ -355,6 +355,7 @@
 "Assets/Game/Parkur/EnvironmentScanner.cs"
 "Assets/Game/Parkur/ParkourController.cs"
 "Assets/Scripts/CameraController.cs"
+"Assets/Scripts/ParkourAction.cs"
 "Assets/Scripts/PlayerController.cs"
 -langversion:9.0
 /deterministic

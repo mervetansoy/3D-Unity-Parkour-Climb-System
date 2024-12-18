@@ -146,7 +146,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 89a4d97c71f1a39428b9412e20850ae5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardRayOffset: {x: 0, y: 0.25, z: 0}
   forwardRayLenght: 0.8
+  heightRayLenght: 5
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -209,6 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af9c9dce8c7b824c820b5230f0e430a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parkourActions:
+  - {fileID: 11400000, guid: a10b593b4b1eb68459aede946a5768a4, type: 2}
+  - {fileID: 11400000, guid: c4e5a180be0e2bc45b43927f63191e5c, type: 2}
 --- !u!1 &473887157
 GameObject:
   m_ObjectHideFlags: 0
