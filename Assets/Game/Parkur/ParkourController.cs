@@ -41,6 +41,8 @@ public class ParkourController : MonoBehaviour
    {
         inAction = true;
         playerController.SetControl(false);
+
+        animator.SetBool("mirrorAction",action.Mirror);
         animator.CrossFade(action.AnimationName, 0.2f);
         yield return null;
 
@@ -58,10 +60,24 @@ public class ParkourController : MonoBehaviour
             if(action.RotateToObstacle)
                 transform.rotation =Quaternion.RotateTowards(transform.rotation,action.TargetRotation, playerController.RotationSpeed*Time.deltaTime);
 
+            if(action.EnableTargetMatching)
+                MatchTarget(action);
+
+            if(animator.IsInTransition(0) && timer >0.5f)
+            break;
+            
             yield return null;
         }
 
+        yield return new WaitForSeconds(action.PositionActionDelay);
+
         playerController.SetControl(true);
         inAction = false;
+   }
+
+   void MatchTarget(ParkourAction action)
+   {
+    if (animator.isMatchingTarget) return;
+    animator.MatchTarget(action.MatchPosition,transform.rotation,action.MatchBodyPart,new MatchTargetWeightMask(action.MatchPositionWeith,0),action.MatchStartTime,action.MatchTargetTime);
    }
 }

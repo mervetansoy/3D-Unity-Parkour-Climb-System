@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Game\Parkur\EnvironmentScanner.cs" />
+    <Compile Include="Assets\Scripts\JumpBoxAction.cs" />
     <Compile Include="Assets\Game\Parkur\ParkourController.cs" />
     <Compile Include="Assets\Scripts\ParkourAction.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
